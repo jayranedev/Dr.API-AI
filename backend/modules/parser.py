@@ -83,6 +83,7 @@ Documentation text:
     chunks = chunk_text(doc_text)
     all_endpoints = []
     api_info = {}
+    last_error = None
 
     for chunk in chunks:
         try:
@@ -122,9 +123,11 @@ Documentation text:
 
             all_endpoints.extend(parsed.get("endpoints", []))
 
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            last_error = f"JSON parse error: {e}"
             continue
-        except Exception:
+        except Exception as e:
+            last_error = str(e)
             continue
 
     seen = set()
@@ -138,7 +141,8 @@ Documentation text:
     api_info["endpoints"] = unique_endpoints
 
     if not unique_endpoints:
-        return {"error": "No endpoints found in documentation"}
+        detail = f"No endpoints found. Last error: {last_error}" if last_error else "No endpoints found — the page may require JavaScript or have no API documentation."
+        return {"error": detail}
 
     return api_info
     
