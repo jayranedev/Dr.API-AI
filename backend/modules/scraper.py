@@ -15,7 +15,7 @@ def is_api_doc_link(url):
     
     return True
 
-def scrape_documentation(url, max_pages=20):
+def scrape_documentation(url, max_pages=30):
     """
     Crawls API documentation and extracts clean text.
     Returns structured result with text and metadata.
