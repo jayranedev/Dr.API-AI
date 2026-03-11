@@ -5,7 +5,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+_client = None
+
+def get_client():
+    global _client
+    if _client is None:
+        _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    return _client
 
 def chunk_text(text, chunk_size=12000):
     """
@@ -80,7 +86,7 @@ Documentation text:
 
     for chunk in chunks:
         try:
-            response = client.chat.completions.create(
+            response = get_client().chat.completions.create(
                 model="gpt-4o",
                 messages=[
                     {
@@ -148,7 +154,7 @@ def ask_about_api(doc_text, api_schema, question):
     """
 
     try:
-        response = client.chat.completions.create(
+        response = get_client().chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content":context},
