@@ -275,7 +275,7 @@ export default function APIForgeApp() {
                 <line x1="14" y1="4" x2="10" y2="20" opacity="0.5" />
               </svg>
             </div>
-            <h1 style={styles.landingTitle}>APIForge AI</h1>
+            <h1 style={styles.landingTitle}>Dr.API AI</h1>
           </div>
 
           <p style={styles.landingSubtitle}>
@@ -399,7 +399,7 @@ export default function APIForgeApp() {
               <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
             </svg>
           </div>
-          <span style={{ color: "#e2e8f0", fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: 15 }}>APIForge AI</span>
+          <span style={{ color: "#e2e8f0", fontFamily: "'JetBrains Mono', monospace", fontWeight: 700, fontSize: 15 }}>Dr.API AI</span>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -549,14 +549,14 @@ export default function APIForgeApp() {
                 {chatMessages.map((msg, i) => (
                   <div key={i} style={{ ...styles.chatBubble, ...(msg.role === "user" ? styles.chatUser : styles.chatAI) }}>
                     <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4, fontFamily: "'JetBrains Mono', monospace" }}>
-                      {msg.role === "user" ? "YOU" : "APIFORGE AI"}
+                      {msg.role === "user" ? "YOU" : "DR.API AI"}
                     </div>
                     <span style={{ whiteSpace: "pre-wrap" }}>{msg.text}</span>
                   </div>
                 ))}
                 {isChatLoading && (
                   <div style={{ ...styles.chatBubble, ...styles.chatAI }}>
-                    <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4, fontFamily: "'JetBrains Mono', monospace" }}>APIFORGE AI</div>
+                    <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4, fontFamily: "'JetBrains Mono', monospace" }}>DR.API AI</div>
                     <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
                       <PulsingDot delay={0} /><PulsingDot delay={0.2} /><PulsingDot delay={0.4} />
                     </div>
