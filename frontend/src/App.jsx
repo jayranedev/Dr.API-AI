@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://drapi-ai-production.up.railway.app";
 
 const methodColors = {
   GET: { bg: "rgba(34,197,94,0.12)", text: "#22c55e", border: "rgba(34,197,94,0.25)" },
